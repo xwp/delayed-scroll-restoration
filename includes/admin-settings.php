@@ -252,7 +252,7 @@ function render_dynamic_selectors_field() {
 		<code>.lazy-loaded</code><br>
 		<code>[data-ad-slot]</code>
 		<br><br>
-		<em><?php esc_html_e( 'When empty, the script will not output.', 'delayed-scroll-restoration' ); ?></em>
+		<em><?php esc_html_e( 'When empty, the delay scroll functionality will not run.', 'delayed-scroll-restoration' ); ?></em>
 	</p>
 	<?php
 }

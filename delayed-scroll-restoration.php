@@ -171,7 +171,7 @@ function output_scroll_script() {
 
 		// Initialize with safelist check, fallback to observer
 		function init() {
-			if ( COMBINED_TARGET_SELECTOR && document.querySelector( COMBINED_TARGET_SELECTOR ) ) {
+			if ( COMBINED_TARGET_SELECTOR && document.querySelector( COMBINED_TARGET_SELECTOR ) || document.querySelector( COMBINED_DYNAMIC_SELECTOR ) ) {
 				setTimeout( restoreScroll, SCROLL_TIMEOUT_MS );
 				return;
 			}
