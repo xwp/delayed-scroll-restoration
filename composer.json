@@ -1,0 +1,27 @@
+
+{
+    "name": "xwp/delayed-scroll-restoration",
+    "description": "Delaying scroll restoration until dynamic elements load, to improve user experience through avoidance of layout instability ( CLS optimization ).",
+    "type": "wordpress-plugin",
+    "require": {
+        "php": ">=8.1",
+        "composer/installers": "~1.0"
+    },
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "XWP",
+            "email": "technology@xwp.co"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/xwp/delayed-scroll-restoration/issues",
+        "source": "https://github.com/xwp/delayed-scroll-restoration"
+    },
+	"repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/xwp/delayed-scroll-restoration"
+        }
+    ]
+}
