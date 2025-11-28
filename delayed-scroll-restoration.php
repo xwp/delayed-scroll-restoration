@@ -3,7 +3,7 @@
  * Plugin Name: Delayed Scroll Restoration
  * Plugin URI: https://xwp.co/
  * Description: Delaying scroll restoration until dynamic elements load, to improve user experience through avoidance of layout instability ( CLS optimization ).
- * Version: 1.0.0
+ * Version: 1.0.1
  * Requires PHP: 8.1
  * Requires at least: 6.3
  * Author: XWP
@@ -15,7 +15,7 @@
 namespace XWP\ScrollRestoration;
 
 const MAIN_DIR = __DIR__;
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 
 // Include admin settings.
 require_once MAIN_DIR . '/includes/admin-settings.php';
@@ -138,8 +138,8 @@ function output_scroll_script() {
 		const OBSERVER_TIMEOUT_MS = <?php echo esc_js(  $observer_timeout  ); ?>;
 		const COMBINED_DYNAMIC_SELECTOR = <?php echo wp_json_encode(  $combined_dynamic_selector  ); ?>;
 		const COMBINED_TARGET_SELECTOR = <?php echo wp_json_encode(  $combined_target_selector  ); ?>;
-		const pageUrl = window.location.href;
-		const savedScrollTop = sessionStorage.getItem( `scrollPosition_${pageUrl}` ) || 0;
+		const initialPageUrl = window.location.href;
+		const savedScrollTop = sessionStorage.getItem( `scrollPosition_${initialPageUrl}` ) || 0;
 
 		// Prevent browser's automatic scroll restoration
 		if ( 'scrollRestoration' in history ) {
@@ -149,7 +149,10 @@ function output_scroll_script() {
 
 		// Save scroll position
 		function saveScrollPosition() {
-			sessionStorage.setItem( `scrollPosition_${pageUrl}`, window.scrollY || document.documentElement.scrollTop );
+			// Only save if the URL hasn't changed (e.g. by infinite scroll)
+			if ( window.location.href === initialPageUrl ) {
+				sessionStorage.setItem( `scrollPosition_${initialPageUrl}`, window.scrollY || document.documentElement.scrollTop );
+			}
 		}
 
 		window.addEventListener( 'pagehide', saveScrollPosition, { capture: true, once: true } );
