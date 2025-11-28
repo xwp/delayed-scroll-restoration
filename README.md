@@ -22,6 +22,33 @@ A WordPress plugin that improves page navigation by intelligently managing scrol
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Configure settings at **Settings → Delayed Scroll Restoration**
 
+### Composer Installation
+
+To install the plugin via Composer, follow these steps:
+
+1. **Add the Repository:**
+   - Open your project's `composer.json` file.
+   - Add the following under the `repositories` section:
+
+     ```json
+     "repositories": [
+         {
+             "type": "vcs",
+             "url": "https://github.com/xwp/delayed-scroll-restoration"
+         }
+     ]
+     ```
+
+2. **Require the Plugin:**
+   - Run the following command in your terminal:
+
+     ```bash
+     composer require xwp/delayed-scroll-restoration
+     ```
+
+3. **Activate the Plugin:**
+   - Once installed, activate the plugin through the 'Plugins' menu in WordPress.
+
 ## Configuration
 
 Navigate to **Settings → Delayed Scroll Restoration** in your WordPress admin to configure:
